@@ -28,6 +28,7 @@ export function plainText(value){return String(value??'').replace(/\\\[([\s\S]*?
 export function exerciseText(e,topic,format='plain'){
  const parts=[`${e.subject==='fisica'?'FÍSICA':'CÁLCULO'} · ${topic?.title||''} · Ejercicio ${e.number}`,e.title,'ENUNCIADO',e.statement];
  if(e.note)parts.push('OBSERVACIÓN SOBRE EL ENUNCIADO',e.note);
+ if(e.diagrams?.length){parts.push('DIBUJOS PARA ENTENDER EL EJERCICIO');e.diagrams.forEach(d=>parts.push(d.title,d.caption,...d.guide.map((g,i)=>`${i+1}. ${g}`)));}
  e.steps.forEach((s,i)=>parts.push(`PASO ${i+1} · ${s.question}`,`Pista: ${s.hint}`,s.explanation,s.math?`\\[${s.math}\\]`:''));
  parts.push('RESULTADO',e.answer,'COMPROBACIONES',...(e.checks||[]).map(x=>`• ${x}`),'DUDAS Y ERRORES HABITUALES',...(e.pitfalls||[]).map(x=>`• ${x}`),`Fuente: ${e.source.file}, página ${e.source.page||1}.`);
  const text=parts.filter(Boolean).join('\n\n');return format==='latex'?text:plainText(text);
