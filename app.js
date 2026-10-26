@@ -1,5 +1,5 @@
-import {marked} from './marked.js';
-import {copyText,plainText,exerciseText} from './copy.js';
+import {marked} from './marked.js?v=20261026-2';
+import {copyText,plainText,exerciseText} from './copy.js?v=20261026-2';
 
 const $=(s,root=document)=>root.querySelector(s);
 const main=$('#main');
