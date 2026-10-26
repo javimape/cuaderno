@@ -1,4 +1,4 @@
-import {marked} from './vendor/marked.js';
+import {marked} from './marked.js';
 import {copyText,plainText,exerciseText} from './copy.js';
 
 const $=(s,root=document)=>root.querySelector(s);
